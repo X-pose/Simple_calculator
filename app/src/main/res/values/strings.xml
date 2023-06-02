@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Calculator_MAD_Final_test</string>
+    <string name="titleTextValue">Simple Calculator</string>
+    <string name="answerTxt">Answer will be displayed here</string>
+    <string name="edtNumber1">Enter first number</string>
+    <string name="edtTxtNumber2">Enter second number</string>
+    <string name="btnAddValue">Add</string>
+    <string name="btnSubValue">Sub</string>
+    <string name="btnMultValue">Multi</string>
+    <string name="btnDivValue">Division</string>
+</resources>
