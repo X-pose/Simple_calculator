@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import com.falcon.calculator_mad_final_test.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,19 +19,19 @@ The app will get the user inputs from two EditText fields (Type : Number) and di
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        /*In here we're declaring 4 val (values) of button type for 4 arithmetic operations. When the user
-            clicks on a button it will perform the arithmetic operation and displays the result*/
-        val btnAdd: Button = findViewById(R.id.btnAdd)
-        val btnSub: Button = findViewById(R.id.btnSub)
-        val btnMult: Button = findViewById(R.id.btnMult)
-        val btnDiv: Button = findViewById(R.id.btnDiv)
+//        initialization databinding
+
+        lateinit var binding :ActivityMainBinding
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+
+
+
 
         /* Declaring a var (Variable :- since this value has to be mutable) of a TextView type and assigning the
         TextView(The one we're going to show the result) to it.
         */
-        var answerTxt: TextView = findViewById(R.id.answerTxt)
+        var answerTxt: TextView = binding.answerTxt
 
 
         /*In here, we are creating an instance of CalLogic class, which contains the arithmetic operation logics.
@@ -57,31 +59,33 @@ The app will get the user inputs from two EditText fields (Type : Number) and di
 
                  That's it!
          */
-        btnAdd.setOnClickListener {
-            var num1:Float? = findViewById<EditText?>(R.id.edtNumber1).text.toString().toFloat()
-            var num2:Float? = findViewById<EditText?>(R.id.edtTxtNumber2).text.toString().toFloat()
+
+
+        binding.btnAdd.setOnClickListener {
+            var num1:Float? = binding.edtNumber1.text.toString().toFloat()
+            var num2:Float? = binding.edtTxtNumber2.text.toString().toFloat()
             val ans = logic.addition(num1, num2)
             answerTxt.text = "Answer : "+ ans.toString()
         }
 
-        btnSub.setOnClickListener {
-            var num1:Float? = findViewById<EditText?>(R.id.edtNumber1).text.toString().toFloat()
-            var num2:Float? = findViewById<EditText?>(R.id.edtTxtNumber2).text.toString().toFloat()
+        binding.btnSub.setOnClickListener {
+            var num1:Float? = binding.edtNumber1.text.toString().toFloat()
+            var num2:Float? = binding.edtTxtNumber2.text.toString().toFloat()
             val ans = logic.substitution(num1, num2)
             answerTxt.text = "Answer : "+ ans.toString()
         }
 
-        btnMult.setOnClickListener {
+        binding.btnMult.setOnClickListener {
 
-            var num1:Float? = findViewById<EditText?>(R.id.edtNumber1).text.toString().toFloat()
-            var num2:Float? = findViewById<EditText?>(R.id.edtTxtNumber2).text.toString().toFloat()
+            var num1:Float? = binding.edtNumber1.text.toString().toFloat()
+            var num2:Float? = binding.edtTxtNumber2.text.toString().toFloat()
             val ans = logic.multiplication(num1, num2)
             answerTxt.text = "Answer : "+ ans.toString()
         }
 
-        btnDiv.setOnClickListener {
-            var num1:Float? = findViewById<EditText?>(R.id.edtNumber1).text.toString().toFloat()
-            var num2:Float? = findViewById<EditText?>(R.id.edtTxtNumber2).text.toString().toFloat()
+        binding.btnDiv.setOnClickListener {
+            var num1:Float? = binding.edtNumber1.text.toString().toFloat()
+            var num2:Float? = binding.edtTxtNumber2.text.toString().toFloat()
             val ans = logic.divition(num1, num2)
             answerTxt.text = "Answer : "+ ans.toString()
         }
